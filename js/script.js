@@ -20,11 +20,11 @@ request.onupgradeneeded = function(event) {
 };
 request.onsuccess = function() {
     db = request.result;
-    console.log("База данных открыта успешно");
+    console.log("The database opened successfully");
     loadTasks();
 };
 request.onerror = function() {
-    console.log("Ошибка при открытии базы данных");
+    console.log("Error when opening the database");
 };
 
 
@@ -51,6 +51,27 @@ function loadTasks() {
         tasks = request.result;
         displayTasks();
     };
+}
+
+function loadTasks_from_file() {
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.onchange = e => { 
+        var file = e.target.files[0]; 
+        var reader = new FileReader();
+        reader.readAsText(file,'UTF-8');
+        reader.onload = readerEvent => {
+            var content = readerEvent.target.result;
+            const jsonTasks = content;
+            if (jsonTasks) {
+                tasks = JSON.parse(jsonTasks);
+                saveTasks();
+                displayTasks();
+            }
+        }
+    }
+    input.click();
+    input.remove();
 }
 
 function displayTasks() {
@@ -102,6 +123,16 @@ function saveTasks() {
         };
         store.add(t);
     });
+}
+
+function saveTasks_to_file(){
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(tasks));
+    var downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href",     dataStr);
+    downloadAnchorNode.setAttribute("download", "tasks" + ".json");
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
 }
 
 function deleteTask(index) {
