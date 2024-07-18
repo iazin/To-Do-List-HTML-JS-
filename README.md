@@ -30,12 +30,14 @@ To run this project locally, you will need a web browser that supports IndexedDB
 ### Installation
 
 1. Clone the repository:
-   sh
+```sh
    git clone https://github.com/iazin/ToDo-List.git
+```
    
-2. Navigate to the project directory:
-   sh
-   cd ToDo-List
+3. Navigate to the project directory:
+```sh
+   cd todo-list
+```
    
 3. Open index.html in your web browser to start using the ToDo-List application.
 
