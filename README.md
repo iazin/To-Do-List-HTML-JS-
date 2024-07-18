@@ -36,7 +36,7 @@ To run this project locally, you will need a web browser that supports IndexedDB
    
 3. Navigate to the project directory:
 ```sh
-   cd todo-list
+   cd ToDo-List
 ```
    
 3. Open index.html in your web browser to start using the ToDo-List application.
