@@ -34,7 +34,7 @@ To run this project locally, you will need a web browser that supports IndexedDB
    git clone https://github.com/iazin/ToDo-List.git
 ```
    
-3. Navigate to the project directory:
+2. Navigate to the project directory:
 ```sh
    cd ToDo-List
 ```
